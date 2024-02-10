@@ -9,7 +9,7 @@ public class Main {
 
 		port(1337);
 
-		staticFiles.externalLocation("/home/tux/javaProjects/rawPages");
+		staticFiles.externalLocation("/home/server-admin/javaProjects/nanotoraw/rawPages");
 
 		// Ensure the server is fully initialized before moving on
 

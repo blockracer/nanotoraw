@@ -3,11 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Decimal Value Converter</title>
+    <title>BigDecimal Conversion</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/big.js/5.2.2/big.min.js"></script>
 </head>
 <body>
 
-<h1>Decimal Value Converter</h1>
+<h1>BigDecimal Conversion</h1>
 
 <label for="inputValue">Enter a value:</label>
 <input type="text" id="inputValue" placeholder="Enter a value">
@@ -23,15 +24,21 @@
 
         // Check if the input is a valid number
         if (!isNaN(inputValue)) {
-            // Move the decimal point 30 places to the right
-            var result = inputValue + '0'.repeat(30);
+            // Convert the input to a BigDecimal
+            var resultBigDecimal = new Big(inputValue);
+
+            // Move the decimal point right 30 times
+            resultBigDecimal = resultBigDecimal.times('1e30');
+	    var formattedResult = new Big(resultBigDecimal).toFixed();
+
 
             // Display the result
-            document.getElementById("result").innerText = "Converted Value: " + result;
+            document.getElementById("result").innerText = "Converted Value: " + formattedResult;
         } else {
             // Display an error message for invalid input
             document.getElementById("result").innerText = "Invalid input. Please enter a valid number.";
         }
+
     }
 </script>
 
